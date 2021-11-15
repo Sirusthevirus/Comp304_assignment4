@@ -47,12 +47,10 @@
         android:id="@+id/editText_Password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="40dp"
         android:layout_marginEnd="64dp"
-        android:contentDescription="Enter Username Here"
-        android:editable="true"
         android:ems="10"
-        android:inputType="textPersonName"
+        android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editText_Username" />
 
@@ -60,11 +58,11 @@
         android:id="@+id/textView_Password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="76dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="24dp"
         android:text="Password:"
         app:layout_constraintEnd_toStartOf="@+id/editText_Password"
-        app:layout_constraintHorizontal_bias="0.571"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView_Username" />
 
@@ -72,10 +70,23 @@
         android:id="@+id/button_Login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
+        android:layout_marginTop="54dp"
+        android:onClick="temp_Login"
         android:text="Login"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editText_Password" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="45dp"
+        android:onClick="insert_Dhevan"
+        android:text="Insert Nurse Dhevan"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_Login" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
