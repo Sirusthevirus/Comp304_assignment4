@@ -25,6 +25,6 @@ public interface NurseDao {
     @Query("Select * FROM nurse_table where nurseID = :nurseID")
     LiveData<Nurse> getByNurseID(int nurseID);
 
-    @Query("Select * FROM patient_table")
+    @Query("Select * FROM nurse_table")
     LiveData<List<Nurse>> getAllNurses();
 }
