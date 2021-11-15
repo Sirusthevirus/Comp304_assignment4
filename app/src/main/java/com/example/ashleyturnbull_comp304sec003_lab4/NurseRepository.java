@@ -18,7 +18,7 @@ public class NurseRepository {
     }
 
     public void insert(Nurse nurse) {
-        PatientDatabase.databaseWriteExecutor.execute(() -> {nurseDao.insert(nurse);});
+        NurseDatabase.databaseWriteExecutor.execute(() -> {nurseDao.insert(nurse);});
     }
 
     public LiveData<Nurse> findbyNurseID(int nurseID) {
