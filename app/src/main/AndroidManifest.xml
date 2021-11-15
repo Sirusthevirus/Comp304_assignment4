@@ -10,9 +10,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AshleyTurnbull_COMP304Sec003_Lab4">
         <activity
-            android:name=".PatientActivity"
+            android:name=".LoginActivity"
             android:parentActivityName=".MainActivity"
             android:exported="true" />
+        <activity
+            android:name=".PatientActivity"
+            android:exported="true"
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".MainActivity"
             android:exported="true">
