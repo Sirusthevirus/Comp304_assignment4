@@ -27,45 +27,50 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="100px"
             android:ems="10"
+            android:onClick="clearText"
             android:inputType="textPersonName"
             android:minHeight="48dp"
-            android:text="Enter First Name" />
+            android:hint="Enter First Name" />
 
         <EditText
             android:id="@+id/txtLastName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
+            android:onClick="clearText"
             android:inputType="textPersonName"
             android:minHeight="48dp"
-            android:text="Enter Last Name" />
+            android:hint="Enter Last Name" />
 
         <EditText
             android:id="@+id/txtDepartment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
+            android:onClick="clearText"
             android:inputType="textPersonName"
             android:minHeight="48dp"
-            android:text="Enter Department" />
+            android:hint="Enter Department" />
 
         <EditText
             android:id="@+id/txtNurseID"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
+            android:onClick="clearText"
             android:inputType="textPersonName"
             android:minHeight="48dp"
-            android:text="Enter Nurse ID" />
+            android:hint="Enter Nurse ID" />
 
         <EditText
             android:id="@+id/txtRoom"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
+            android:onClick="clearText"
             android:inputType="textPersonName"
             android:minHeight="48dp"
-            android:text="Enter Room" />
+            android:hint="Enter Room" />
 
         <Button
             android:id="@+id/btnEnterPatient"
@@ -75,5 +80,13 @@
             android:gravity="center|center_horizontal|center_vertical"
             android:onClick="createPatientButton"
             android:text="Enter Patient" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="50dp"
+            android:text="TextView" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
