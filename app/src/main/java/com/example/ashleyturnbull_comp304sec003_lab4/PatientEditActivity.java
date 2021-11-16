@@ -1,19 +1,19 @@
 package com.example.ashleyturnbull_comp304sec003_lab4;
 
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.google.android.material.textfield.TextInputEditText;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 
 import java.util.List;
 
-public class PatientActivity extends AppCompatActivity {
+public class PatientEditActivity extends AppCompatActivity {
     private PatientViewModel patientViewModel;
     private EditText firstName, lastName, department, nurseID, room;
     private TextView textView;
@@ -44,7 +44,7 @@ public class PatientActivity extends AppCompatActivity {
             finish();
         }
         else {
-            Toast.makeText(PatientActivity.this, "Please ensure there are no null values", Toast.LENGTH_SHORT).show();
+            Toast.makeText(PatientEditActivity.this, "Please ensure there are no null values", Toast.LENGTH_SHORT).show();
         }
     }
 

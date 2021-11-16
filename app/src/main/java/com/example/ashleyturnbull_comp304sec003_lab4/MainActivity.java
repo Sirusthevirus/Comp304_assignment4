@@ -15,8 +15,13 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
-    public void login(View view) {
-        Intent intent = new Intent(this, LoginActivity.class);
+    public void addPatients(View view) {
+        Intent intent = new Intent(this, PatientActivity.class);
+        startActivity(intent);
+    }
+
+    public void editPatients(View view){
+        Intent intent = new Intent(this, PatientActivity.class);
         startActivity(intent);
     }
 }

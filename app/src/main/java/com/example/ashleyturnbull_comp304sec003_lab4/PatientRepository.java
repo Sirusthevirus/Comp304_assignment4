@@ -24,4 +24,8 @@ public class PatientRepository {
     public LiveData<Patient> findbyPatientID(int patientID) {
         return patientDao.getByPatientID(patientID);
     }
+
+    public void deletePatient(Patient patient){
+    }
+
 }

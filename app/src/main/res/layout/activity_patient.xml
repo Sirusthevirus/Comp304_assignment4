@@ -27,7 +27,6 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="100px"
             android:ems="10"
-            android:onClick="clearText"
             android:inputType="textPersonName"
             android:minHeight="48dp"
             android:hint="Enter First Name" />
@@ -37,7 +36,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:onClick="clearText"
             android:inputType="textPersonName"
             android:minHeight="48dp"
             android:hint="Enter Last Name" />
@@ -47,7 +45,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:onClick="clearText"
             android:inputType="textPersonName"
             android:minHeight="48dp"
             android:hint="Enter Department" />
@@ -56,8 +53,6 @@
             android:id="@+id/txtNurseID"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:onClick="clearText"
             android:inputType="textPersonName"
             android:minHeight="48dp"
             android:hint="Enter Nurse ID" />
@@ -67,7 +62,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:onClick="clearText"
             android:inputType="textPersonName"
             android:minHeight="48dp"
             android:hint="Enter Room" />
