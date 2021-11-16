@@ -53,6 +53,7 @@ public class LoginActivity extends AppCompatActivity {
                         break;
                     }
                 }
+                //Boolean nurseFound = true;
                 if(nurseFound){
                     Toast.makeText(LoginActivity.this, "Correct Details Entered", Toast.LENGTH_SHORT).show();
                     login_Successful(v);
@@ -65,7 +66,8 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void login_Successful(View view) {
-        Intent intent = new Intent(this, PatientActivity.class);
+        Intent intent = new Intent(this, MainActivity.class);
+        //Intent intent = new Intent(this, PatientActivity.class);
         startActivity(intent);
     }
 
