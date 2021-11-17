@@ -31,12 +31,12 @@ private static RoomDatabase.Callback sRoomDatabaseCallback = new RoomDatabase.Ca
         public void onOpen(@NonNull SupportSQLiteDatabase db) {
             super.onOpen(db);
             // If you want to keep data through app restarts, comment out the following block
-            databaseWriteExecutor.execute(() -> {
-            // Populate the database in the background.
-            // If you want to start with more patients, just add them.
-                PatientDao dao = INSTANCE.patientDao();
-                dao.deleteAll();
-            });
+//            databaseWriteExecutor.execute(() -> {
+//            // Populate the database in the background.
+//            // If you want to start with more patients, just add them.
+//                PatientDao dao = INSTANCE.patientDao();
+//                dao.deleteAll();
+//            });
         }
     };
 }

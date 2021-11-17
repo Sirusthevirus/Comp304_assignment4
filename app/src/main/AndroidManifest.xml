@@ -10,6 +10,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AshleyTurnbull_COMP304Sec003_Lab4">
         <activity
+            android:name=".ViewTestInfoActivity"
+            android:exported="true" />
+            android:parentActivityName=".MainActivity" />
+        <activity
             android:name=".PatientActivity"
             android:exported="true"
             android:parentActivityName=".MainActivity" />
@@ -19,7 +23,7 @@
             android:parentActivityName=".LoginActivity" />
         <activity
             android:name=".LoginActivity"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
