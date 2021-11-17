@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -19,6 +20,7 @@ public class ViewTestInfoActivity extends AppCompatActivity implements AdapterVi
 
     private PatientViewModel patientViewModel;
     private TestViewModel testViewModel;
+    private EditText editTextPatientID, editTextPatientName, editTextNurseID, editTextBPL, editTextBPH, editTextTemp, editTextDate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,21 +43,20 @@ public class ViewTestInfoActivity extends AppCompatActivity implements AdapterVi
 //                }
 //            }
 //        });
+
         testViewModel.getAllTests().observe(this, new Observer<List<Test>>() {
             @Override
             public void onChanged(@Nullable List<Test> result) {
                 Toast.makeText(ViewTestInfoActivity.this, "Size:  \n" + result.size(), Toast.LENGTH_LONG).show();
                 for(Test test : result) {
                     testIDs.add(test.getTestID());
-
-
                 }
 
             }
         });
 
         Spinner spinner = findViewById(R.id.spinner_Tests);
-        ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, testIDs);
+        ArrayAdapter<CharSequence> adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, testIDs);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener(this);
@@ -63,11 +64,19 @@ public class ViewTestInfoActivity extends AppCompatActivity implements AdapterVi
 
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-
+        String string = adapterView.getItemAtPosition(i).toString();
+        int testID = Integer.parseInt((string));
+        Test tempTest = testViewModel.getAllTests().getValue().get(i);
+        editTextPatientID.setText(tempTest.getPatientID());
+        editTextNurseID.setText((tempTest.getNurseID()));
+        editTextBPL.setText(tempTest.getBPL());
+        editTextBPH.setText(tempTest.getBPH());
+        editTextTemp.setText(""+tempTest.getTemperature());
+        editTextDate.setText(tempTest.getTestDate());
     }
 
     @Override
     public void onNothingSelected(AdapterView<?> adapterView) {
-
+        Toast.makeText(adapterView.getContext(), "Nothing Selected", Toast.LENGTH_SHORT).show();
     }
 }

@@ -47,6 +47,9 @@ public abstract class TestDatabase extends RoomDatabase {
             Test test = new Test(2, 301130935, 90, 120, 36, "17 Nov 2021");
             test.setTestID(1);
             testDao.insert(test);
+            Test test2 = new Test(2, 301190323, 95, 115, 36, "11 Nov 2021");
+            test2.setTestID(2);
+            testDao.insert(test2);
             return null;
         }
     }
