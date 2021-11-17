@@ -44,9 +44,9 @@ public class LoginActivity extends AppCompatActivity {
             public void onChanged(List<Nurse> nurses) {
                 String output="";
                 for(Nurse nurse : nurses) {
-                    output+= nurse.getFirstName() + "\t"+ nurse.getNurseID() +"\t"+nurse.getPassword();
+                    output+= nurse.getFirstName() + " "+ nurse.getNurseID() +" "+nurse.getPassword() +"\n";
                 }
-                Toast.makeText(LoginActivity.this, "Inserted:  " + output, Toast.LENGTH_SHORT).show();
+                Toast.makeText(LoginActivity.this, "Inserted:  \n" + output, Toast.LENGTH_LONG).show();
             }
         });
     }

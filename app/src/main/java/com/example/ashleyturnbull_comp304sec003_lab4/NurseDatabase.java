@@ -24,7 +24,7 @@ public abstract class NurseDatabase extends RoomDatabase {
         if (INSTANCE == null) {
             synchronized (NurseDatabase.class) {
                 if (INSTANCE == null) {
-                    INSTANCE = Room.databaseBuilder(context.getApplicationContext(), NurseDatabase.class, "nurse_database").addCallback(sRoomDatabaseCallback).addCallback(roomCallBack).build();
+                    INSTANCE = Room.databaseBuilder(context.getApplicationContext(), NurseDatabase.class, "nurse_database").addCallback(sRoomDatabaseCallback).build();
                 }
             }
         }
@@ -50,7 +50,7 @@ public abstract class NurseDatabase extends RoomDatabase {
         @Override
         public void onCreate(@NonNull SupportSQLiteDatabase db) {
             super.onCreate(db);
-            new PopulateDbAsyncTasks(INSTANCE).execute();
+            //new PopulateDbAsyncTasks(INSTANCE).execute();
         }
     };
 
@@ -66,6 +66,9 @@ public abstract class NurseDatabase extends RoomDatabase {
             Nurse nurse = new Nurse("Dhevan", "Lau", "Diseases", "12345");
             nurse.setNurseID(301130935);
             nurseDao.insert(nurse);
+            Nurse nurse2 = new Nurse("Ashley", "Turnbull", "ER", "12345");
+            nurse2.setNurseID(301190323);
+            nurseDao.insert(nurse2);
             return null;
         }
     }

@@ -1,6 +1,7 @@
 package com.example.ashleyturnbull_comp304sec003_lab4;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -10,6 +11,9 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.content.SharedPreferences;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -18,7 +22,11 @@ public class MainActivity extends AppCompatActivity {
     SharedPreferences sharedpreferences;
 
     private int nurseProfileID;
-    private TextView textViewNurseID;
+    private TextView textViewNurseID, textViewNurseName, textViewNurseDepartment;
+
+    private NurseViewModel nurseViewModel;
+    private Nurse nurse;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +36,19 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
         nurseProfileID = sharedpreferences.getInt(NurseKey, 0);
         textViewNurseID = findViewById(R.id.textViewNurseID);
-        textViewNurseID.setText("Nurse ID: "+nurseProfileID);
+        textViewNurseName = findViewById(R.id.textNurseName);
+        textViewNurseDepartment = findViewById(R.id.textViewDepartment);
+
+//        nurseViewModel = new ViewModelProvider(this).get(NurseViewModel.class);
+//        List<Nurse> nurseList = nurseViewModel.getAllNurses().getValue();
+//        Toast.makeText(MainActivity.this, "Num Nurses: "+nurseList.size(), Toast.LENGTH_LONG).show();
+
+//        nurse = nurseViewModel.findByNurseID(nurseProfileID).getValue();
+//
+//        textViewNurseID.setText("Nurse ID: "+nurse.getNurseID());
+//        textViewNurseName.setText("Welcome "+nurse.getFirstName());
+//        textViewNurseDepartment.setText("Department" + nurse.getDepartment());
+
     }
 
     public void addPatients(View view) {
