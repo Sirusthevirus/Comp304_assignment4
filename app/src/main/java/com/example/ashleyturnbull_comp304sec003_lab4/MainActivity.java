@@ -1,6 +1,7 @@
 package com.example.ashleyturnbull_comp304sec003_lab4;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.annotation.SuppressLint;
@@ -39,16 +40,37 @@ public class MainActivity extends AppCompatActivity {
         textViewNurseName = findViewById(R.id.textNurseName);
         textViewNurseDepartment = findViewById(R.id.textViewDepartment);
 
-//        nurseViewModel = new ViewModelProvider(this).get(NurseViewModel.class);
-//        List<Nurse> nurseList = nurseViewModel.getAllNurses().getValue();
-//        Toast.makeText(MainActivity.this, "Num Nurses: "+nurseList.size(), Toast.LENGTH_LONG).show();
+        nurseViewModel = new ViewModelProvider(this).get(NurseViewModel.class);
+        nurseViewModel.getAllNurses().observe(this, new Observer<List<Nurse>>() {
+            @Override
+            public void onChanged(List<Nurse> nurses) {
+                String output="";
+                for(Nurse n : nurses) {
+                    if(n.getNurseID() == nurseProfileID) {
+                        textViewNurseName.setText("Welcome: "+n.getFirstName());
+                        textViewNurseID.setText("Nurse ID: "+n.getNurseID());
+                        textViewNurseDepartment.setText("Department: " + n.getDepartment());
+                    }
+                }
+            }
+        });
 
-//        nurse = nurseViewModel.findByNurseID(nurseProfileID).getValue();
-//
+
 //        textViewNurseID.setText("Nurse ID: "+nurse.getNurseID());
 //        textViewNurseName.setText("Welcome "+nurse.getFirstName());
 //        textViewNurseDepartment.setText("Department" + nurse.getDepartment());
 
+    }
+
+    private Nurse findNurse(int id){
+        List<Nurse> nurseList = nurseViewModel.getAllNurses().getValue();
+
+        for (Nurse n : nurseList){
+            if(n.getNurseID() == id){
+                return n;
+            }
+        }
+        return null;
     }
 
     public void addPatients(View view) {

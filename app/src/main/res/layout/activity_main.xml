@@ -30,13 +30,13 @@
             android:layout_width="match_parent"
             android:layout_height="55dp"
             android:text="Nurse ID:"
-            android:textSize="16sp" />
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/textViewDepartment"
             android:layout_width="match_parent"
             android:layout_height="61dp"
-            android:text="Department"
+            android:text="Department: "
             android:textSize="20sp" />
 
     </LinearLayout>

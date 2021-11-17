@@ -16,8 +16,8 @@ public class NurseViewModel extends AndroidViewModel{
         allNurses = nurseRepository.getAllNurses();
     }
 
-    public LiveData<Nurse> findByNurseID(int nurseID) {
-        return nurseRepository.findbyNurseID(nurseID);
+    public LiveData<Nurse> getByNurseID(int nurseID) {
+        return nurseRepository.getByNurseID(nurseID);
     }
 
     public void insert(Nurse nurse) {

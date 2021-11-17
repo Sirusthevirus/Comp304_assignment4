@@ -42,7 +42,7 @@ public class NurseRepository {
         return insertResult;
     }
 
-    public LiveData<Nurse> findbyNurseID(int nurseID) {
+    public LiveData<Nurse> getByNurseID(int nurseID) {
         return nurseDao.getByNurseID(nurseID);
     }
 }
