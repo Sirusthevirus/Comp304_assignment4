@@ -82,4 +82,9 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, ViewTestInfoActivity.class);
         startActivity(intent);
     }
+
+    public void enterTestInfo(View view){
+        Intent intent = new Intent(this, TestActivity.class);
+        startActivity(intent);
+    }
 }

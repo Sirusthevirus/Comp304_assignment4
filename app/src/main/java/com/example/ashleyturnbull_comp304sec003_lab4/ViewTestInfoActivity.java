@@ -29,10 +29,18 @@ public class ViewTestInfoActivity extends AppCompatActivity implements AdapterVi
 
         patientViewModel = new ViewModelProvider(this).get(PatientViewModel.class);
         testViewModel = new ViewModelProvider(this).get(TestViewModel.class);
-        //Spinner
 
         //ArrayList<String> patientsNames = new ArrayList<String>();
         ArrayList<Integer> testIDs = new ArrayList<Integer>();
+
+        //Spinner
+        Spinner spinner = findViewById(R.id.spinner_Tests);
+        ArrayAdapter<CharSequence> adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, testIDs);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
+        spinner.setOnItemSelectedListener(this);
+
+
 
 //        patientViewModel.getAllPatients().observe(this, new Observer<List<Patient>>() {
 //            @Override
@@ -55,11 +63,7 @@ public class ViewTestInfoActivity extends AppCompatActivity implements AdapterVi
             }
         });
 
-        Spinner spinner = findViewById(R.id.spinner_Tests);
-        ArrayAdapter<CharSequence> adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, testIDs);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(adapter);
-        spinner.setOnItemSelectedListener(this);
+
     }
 
     @Override
