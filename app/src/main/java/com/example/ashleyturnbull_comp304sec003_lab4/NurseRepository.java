@@ -21,7 +21,22 @@ public class NurseRepository {
     }
 
     public void insert(Nurse nurse) {
-        NurseDatabase.databaseWriteExecutor.execute(() -> {nurseDao.insert(nurse);});
+        insertAsync(nurse);
+    }
+
+    private void insertAsync(final Nurse nurse) {
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    nurseDao.insert(nurse);
+                    insertResult.postValue(1);
+                } catch (Exception e) {
+                    insertResult.postValue(0);
+                }
+            }
+        }).start();
     }
     public LiveData<Integer> getInsertResult() {
         return insertResult;

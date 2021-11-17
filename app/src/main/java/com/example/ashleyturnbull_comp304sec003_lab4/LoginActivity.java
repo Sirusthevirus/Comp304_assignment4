@@ -18,7 +18,6 @@ import java.util.List;
 
 public class LoginActivity extends AppCompatActivity {
     private NurseViewModel nurseViewModel;
-    private Button btnLogin;
     private EditText editTextUsername, editTextPassword;
 
     Nurse nurse;
@@ -30,53 +29,43 @@ public class LoginActivity extends AppCompatActivity {
 
         editTextUsername = findViewById(R.id.editText_Username);
         editTextPassword = findViewById(R.id.editText_Password);
-        btnLogin = findViewById(R.id.button_Login);
         //
         nurseViewModel = new ViewModelProvider(this).get(NurseViewModel.class);
-        //
-
-        //
-        btnLogin.setOnClickListener(new View.OnClickListener() {
-            //Implement the event handler method
-            public void onClick(View v) {
-                int username = Integer.parseInt(editTextUsername.getText().toString());
-                String password = editTextPassword.getText().toString();
-                Log.v("Username + Password: ", username + " " + password);
-
-                LiveData<List<Nurse>> nurseData = nurseViewModel.getAllNurses();
-                List<Nurse> nurseList = nurseData.getValue();
-                Boolean nurseFound = false;
-
-                for (Nurse n : nurseList){
-                    if((n.getNurseID() == username) && (n.getPassword() == password)){
-                        nurseFound = true;
-                        break;
-                    }
+        nurseViewModel.getAllNurses().observe(this, new Observer<List<Nurse>>() {
+            @Override
+            public void onChanged(List<Nurse> nurses) {
+                String output="";
+                for(Nurse nurse : nurses) {
+                    output+= nurse.getFirstName() + "\t"+ nurse.getNurseID() +"\t"+nurse.getPassword();
                 }
-                //Boolean nurseFound = true;
-                if(nurseFound){
-                    Toast.makeText(LoginActivity.this, "Correct Details Entered", Toast.LENGTH_SHORT).show();
-                    login_Successful(v);
-                }
-                else{
-                    Toast.makeText(LoginActivity.this, "Incorrect Username or Password", Toast.LENGTH_SHORT).show();
-                }
+                Toast.makeText(LoginActivity.this, output, Toast.LENGTH_SHORT).show();
             }
         });
     }
 
-    public void login_Successful(View view) {
-        Intent intent = new Intent(this, MainActivity.class);
-        //Intent intent = new Intent(this, PatientActivity.class);
-        startActivity(intent);
+    public void attempt_Login(View view){
+        int username = Integer.parseInt(editTextUsername.getText().toString());
+        String password = editTextPassword.getText().toString();
+        Toast.makeText(LoginActivity.this, "Username: " + username + " " + "Password: " + password, Toast.LENGTH_SHORT).show();
+
+        List<Nurse> nurseList = nurseViewModel.getAllNurses().getValue();
+
+        Boolean nurseFound = false;
+
+        for (Nurse n : nurseList){
+            if((n.getNurseID() == username) && (n.getPassword().equals(password))){
+                nurseFound = true;
+                break;
+            }
+        }
+
+        if(nurseFound){
+            Toast.makeText(LoginActivity.this, "Correct Details Entered", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(this, PatientActivity.class);
+            startActivity(intent);
+        }
+        else{
+            Toast.makeText(LoginActivity.this, "Incorrect Username or Password", Toast.LENGTH_SHORT).show();
+        }
     }
-
-    public void insert_Dhevan(View view){
-        //Create nurse Dhevan and insert in backend
-        nurse = new Nurse("Dhevan", "Lau", "Diseases", "12345");
-        nurse.setNurseID(301130935);
-        nurseViewModel.insert(nurse);
-
-    }
-
 }
