@@ -55,11 +55,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
-//        textViewNurseID.setText("Nurse ID: "+nurse.getNurseID());
-//        textViewNurseName.setText("Welcome "+nurse.getFirstName());
-//        textViewNurseDepartment.setText("Department" + nurse.getDepartment());
-
     }
 
     private Nurse findNurse(int id){
@@ -80,6 +75,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void editPatients(View view){
         Intent intent = new Intent(this, PatientListActivity.class);
+        startActivity(intent);
+    }
+
+    public void viewTestInfo(View view){
+        Intent intent = new Intent(this, ViewTestInfoActivity.class);
         startActivity(intent);
     }
 }

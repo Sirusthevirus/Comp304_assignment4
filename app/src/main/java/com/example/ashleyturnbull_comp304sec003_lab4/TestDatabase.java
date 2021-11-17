@@ -16,11 +16,11 @@ public abstract class TestDatabase extends RoomDatabase {
 
     public abstract TestDao testDao();
 
-    public static synchronized TestDatabase getInstance(Context context) {
+    public static synchronized TestDatabase getDatabase(Context context) {
         if (instance == null) {
             instance = Room.databaseBuilder(context.getApplicationContext(),
                     TestDatabase.class, "test_database")
-                    .fallbackToDestructiveMigration()
+                    .addCallback(roomCallBack)
                     .build();
         }
         return instance;
@@ -30,6 +30,7 @@ public abstract class TestDatabase extends RoomDatabase {
         @Override
         public void onCreate(@NonNull SupportSQLiteDatabase db) {
             super.onCreate(db);
+            new PopulateDbAsyncTask(instance).execute();
         }
     };
 
@@ -43,7 +44,9 @@ public abstract class TestDatabase extends RoomDatabase {
         @Override
         protected Void doInBackground(Void... voids){
             //If you want to pre insert data add it here
-            testDao.insert(new Test(1000, 301130935, 90, 120, 36, "17 Nov 2021"));
+            Test test = new Test(2, 301130935, 90, 120, 36, "17 Nov 2021");
+            test.setTestID(1);
+            testDao.insert(test);
             return null;
         }
     }

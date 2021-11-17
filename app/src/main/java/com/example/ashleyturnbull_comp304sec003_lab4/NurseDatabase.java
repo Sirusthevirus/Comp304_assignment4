@@ -24,7 +24,10 @@ public abstract class NurseDatabase extends RoomDatabase {
         if (INSTANCE == null) {
             synchronized (NurseDatabase.class) {
                 if (INSTANCE == null) {
-                    INSTANCE = Room.databaseBuilder(context.getApplicationContext(), NurseDatabase.class, "nurse_database").addCallback(roomCallBack).build();
+                    INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
+                            NurseDatabase.class, "nurse_database")
+                            .addCallback(roomCallBack)
+                            .build();
                 }
             }
         }

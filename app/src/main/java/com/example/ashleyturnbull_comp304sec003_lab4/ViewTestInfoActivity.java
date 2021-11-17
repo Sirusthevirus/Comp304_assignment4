@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,6 +18,7 @@ import java.util.List;
 public class ViewTestInfoActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
 
     private PatientViewModel patientViewModel;
+    private TestViewModel testViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,22 +26,36 @@ public class ViewTestInfoActivity extends AppCompatActivity implements AdapterVi
         setContentView(R.layout.activity_view_test_info);
 
         patientViewModel = new ViewModelProvider(this).get(PatientViewModel.class);
+        testViewModel = new ViewModelProvider(this).get(TestViewModel.class);
         //Spinner
 
-        ArrayList<Integer> patientsIDs = new ArrayList<Integer>();
+        //ArrayList<String> patientsNames = new ArrayList<String>();
+        ArrayList<Integer> testIDs = new ArrayList<Integer>();
 
-        patientViewModel.getAllPatients().observe(this, new Observer<List<Patient>>() {
+//        patientViewModel.getAllPatients().observe(this, new Observer<List<Patient>>() {
+//            @Override
+//            public void onChanged(@Nullable List<Patient> result) {
+//
+//                for(Patient patient : result) {
+//                    patientsNames.add(patient.getFirstName());
+//                }
+//            }
+//        });
+        testViewModel.getAllTests().observe(this, new Observer<List<Test>>() {
             @Override
-            public void onChanged(@Nullable List<Patient> result) {
+            public void onChanged(@Nullable List<Test> result) {
+                Toast.makeText(ViewTestInfoActivity.this, "Size:  \n" + result.size(), Toast.LENGTH_LONG).show();
+                for(Test test : result) {
+                    testIDs.add(test.getTestID());
 
-                for(Patient patient : result) {
-                    patientsIDs.add(patient.getPatientID());
+
                 }
+
             }
         });
 
-        Spinner spinner = findViewById(R.id.spinner_patients);
-        ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, patientsIDs);
+        Spinner spinner = findViewById(R.id.spinner_Tests);
+        ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, testIDs);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener(this);

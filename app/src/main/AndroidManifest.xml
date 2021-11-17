@@ -19,7 +19,7 @@
             android:parentActivityName=".PatientActivity"/>
         <activity
             android:name=".ViewTestInfoActivity"
-            android:exported="true" />
+            android:exported="true"
             android:parentActivityName=".MainActivity" />
         <activity
             android:name=".PatientActivity"

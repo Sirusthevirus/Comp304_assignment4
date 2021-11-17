@@ -12,7 +12,7 @@ public class TestRepository {
     private LiveData<List<Test>> allTests;
 
     public TestRepository(Application application){
-        TestDatabase database = TestDatabase.getInstance(application);
+        TestDatabase database = TestDatabase.getDatabase(application);
         testDao = database.testDao();
         allTests = testDao.getAllTests();
     }
