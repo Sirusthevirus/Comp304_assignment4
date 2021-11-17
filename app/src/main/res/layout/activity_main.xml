@@ -18,7 +18,7 @@
         app:layout_constraintVertical_bias="0.0">
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/textNurseName"
             android:layout_width="match_parent"
             android:layout_height="69dp"
             android:layout_gravity="center"
@@ -26,14 +26,14 @@
             android:textSize="24sp" />
 
         <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/textViewNurseID"
             android:layout_width="match_parent"
             android:layout_height="55dp"
             android:text="Nurse ID:"
             android:textSize="16sp" />
 
         <TextView
-            android:id="@+id/textView4"
+            android:id="@+id/textViewDepartment"
             android:layout_width="match_parent"
             android:layout_height="61dp"
             android:text="Department"

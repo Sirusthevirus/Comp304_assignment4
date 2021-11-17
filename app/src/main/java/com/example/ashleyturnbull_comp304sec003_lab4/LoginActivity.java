@@ -1,5 +1,6 @@
 package com.example.ashleyturnbull_comp304sec003_lab4;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -13,6 +14,7 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
+import android.content.SharedPreferences;
 
 import java.util.List;
 
@@ -22,6 +24,10 @@ public class LoginActivity extends AppCompatActivity {
 
     Nurse nurse;
 
+    public static final String MyPREFERENCES = "Assignment4Prefs" ;
+    public static final String NurseKey = "nurseID";
+    SharedPreferences sharedpreferences;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,6 +35,8 @@ public class LoginActivity extends AppCompatActivity {
 
         editTextUsername = findViewById(R.id.editText_Username);
         editTextPassword = findViewById(R.id.editText_Password);
+        //
+        sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
         //
         nurseViewModel = new ViewModelProvider(this).get(NurseViewModel.class);
         nurseViewModel.getAllNurses().observe(this, new Observer<List<Nurse>>() {
@@ -38,7 +46,7 @@ public class LoginActivity extends AppCompatActivity {
                 for(Nurse nurse : nurses) {
                     output+= nurse.getFirstName() + "\t"+ nurse.getNurseID() +"\t"+nurse.getPassword();
                 }
-                Toast.makeText(LoginActivity.this, output, Toast.LENGTH_SHORT).show();
+                Toast.makeText(LoginActivity.this, "Inserted:  " + output, Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -46,7 +54,7 @@ public class LoginActivity extends AppCompatActivity {
     public void attempt_Login(View view){
         int username = Integer.parseInt(editTextUsername.getText().toString());
         String password = editTextPassword.getText().toString();
-        Toast.makeText(LoginActivity.this, "Username: " + username + " " + "Password: " + password, Toast.LENGTH_SHORT).show();
+        //Toast.makeText(LoginActivity.this, "Username: " + username + " " + "Password: " + password, Toast.LENGTH_SHORT).show();
 
         List<Nurse> nurseList = nurseViewModel.getAllNurses().getValue();
 
@@ -61,7 +69,10 @@ public class LoginActivity extends AppCompatActivity {
 
         if(nurseFound){
             Toast.makeText(LoginActivity.this, "Correct Details Entered", Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent(this, PatientActivity.class);
+            SharedPreferences.Editor editor = sharedpreferences.edit();
+            editor.putInt(NurseKey, username);
+            editor.commit();
+            Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
         }
         else{
