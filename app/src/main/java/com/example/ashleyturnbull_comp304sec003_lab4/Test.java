@@ -27,13 +27,13 @@ public class Test {
     @NonNull
     private String testDate;
 
-    public Test(@NonNull int patientID, @NonNull int nurseID, @NonNull int bpl, @NonNull int bph, @NonNull float temperature, @NonNull String date) {
+    public Test(@NonNull int patientID, @NonNull int nurseID, @NonNull int BPL, @NonNull int BPH, @NonNull float temperature, @NonNull String testDate) {
         this.patientID = patientID;
         this.nurseID = nurseID;
-        this.BPH = bph;
-        this.BPL = bpl;
+        this.BPH = BPH;
+        this.BPL = BPL;
         this.temperature = temperature;
-        this.testDate = date;
+        this.testDate = testDate;
     }
 
     public void setTestID(int testID) {

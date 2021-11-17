@@ -43,6 +43,7 @@ public abstract class TestDatabase extends RoomDatabase {
         @Override
         protected Void doInBackground(Void... voids){
             //If you want to pre insert data add it here
+            testDao.insert(new Test(1000, 301130935, 90, 120, 36, "17 Nov 2021"));
             return null;
         }
     }
