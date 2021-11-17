@@ -10,6 +10,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AshleyTurnbull_COMP304Sec003_Lab4" >
         <activity
+            android:name=".PatientEditActivity"
+            android:exported="true"
+            android:parentActivityName=".PatientActivity"/>
+        <activity
             android:name=".PatientListActivity"
             android:exported="true"
             android:parentActivityName=".PatientActivity"/>
