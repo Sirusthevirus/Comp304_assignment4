@@ -6,24 +6,150 @@
     android:layout_height="match_parent"
     tools:context=".PatientListActivity">
 
-    <LinearLayout android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+    <TextView
+        android:id="@+id/textView_TitleEditPatient"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Edit Patient Data"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.506"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="clip_horizontal|center"
-            android:text="Edit Patient Info"
-            android:textSize="20sp"
-            android:textStyle="bold" />
+    <Spinner
+        android:id="@+id/spn_Patients"
+        android:layout_width="193dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="28dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.704"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_TitleEditPatient"
+        tools:ignore="SpeakableTextPresentCheck" />
 
-        <ListView
-            android:id="@+id/patientListView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-    </LinearLayout>
+    <TextView
+        android:id="@+id/spn_SelectPatient"
+        android:layout_width="134dp"
+        android:layout_height="29dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="48dp"
+        android:text="Select Patient ID:"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/spn_Patients"
+        app:layout_constraintHorizontal_bias="0.016"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_TitleEditPatient" />
+
+    <TextView
+        android:id="@+id/textView_FirstName"
+        android:layout_width="104dp"
+        android:layout_height="27dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="64dp"
+        android:text="Firstname:"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spn_SelectPatient" />
+
+    <EditText
+        android:id="@+id/editText_FirstName"
+        android:layout_width="207dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="36dp"
+        android:hint="Firstname"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.769"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spn_Patients" />
+
+    <TextView
+        android:id="@+id/textView_LastName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="76dp"
+        android:text="Lastname:"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_FirstName" />
+
+    <EditText
+        android:id="@+id/editText_LastName"
+        android:layout_width="207dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="36dp"
+        android:hint="Lastname"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.764"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText_FirstName" />
+
+    <TextView
+        android:id="@+id/textView_Department"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="72dp"
+        android:text="Department:"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_LastName" />
+
+    <EditText
+        android:id="@+id/editText_Department"
+        android:layout_width="207dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="56dp"
+        android:hint="Department"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.769"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText_LastName" />
+
+    <TextView
+        android:id="@+id/textView_NurseID"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="NurseID:"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_Department"
+        app:layout_constraintVertical_bias="0.212" />
+
+    <EditText
+        android:id="@+id/editText_NurseID"
+        android:layout_width="207dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="44dp"
+        android:hint="Nurse ID"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.764"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText_Department" />
+
+    <TextView
+        android:id="@+id/textView_Room"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="80dp"
+        android:text="Room:"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_NurseID" />
+
+    <EditText
+        android:id="@+id/editText_Room"
+        android:layout_width="207dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="52dp"
+        android:hint="Room ID"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.769"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText_NurseID" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
