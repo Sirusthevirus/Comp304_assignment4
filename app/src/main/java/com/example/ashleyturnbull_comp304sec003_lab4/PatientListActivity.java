@@ -57,19 +57,17 @@ public class PatientListActivity extends AppCompatActivity implements AdapterVie
 
         @Override
         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                patientViewModel.getAllPatients().observe(this, new Observer<List<Patient>>() {
-                        @Override
-                        public void onChanged(@Nullable List<Patient> result) {
+                String string = parent.getItemAtPosition(position).toString();
+                int patientID = Integer.parseInt((string));
+                Patient patient = patientViewModel.findByPatientID(patientID).getValue();
 
-                                for (Patient patient : result) {
-                                        firstName.setText(patient.getFirstName());
-                                        lastName.setText(patient.getLastName());
-                                        department.setText(patient.getDepartment());
-                                        nurseID.setText(patient.getNurseID());
-                                        room.setText(patient.getRoom());
-                                }
-                        }
-                });
+                firstName.setText(patient.getFirstName());
+                lastName.setText(patient.getLastName());
+                department.setText(patient.getDepartment());
+                nurseID.setText(patient.getNurseID());
+                room.setText(patient.getRoom());
+
+
         }
 
         @Override
