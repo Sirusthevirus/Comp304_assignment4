@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.ashleyturnbull_comp304sec003_lab4">
+    package="com.example.ashleyturnbull_comp304sec003_lab4" >
 
     <application
         android:allowBackup="true"
@@ -8,7 +8,15 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.AshleyTurnbull_COMP304Sec003_Lab4">
+        android:theme="@style/Theme.AshleyTurnbull_COMP304Sec003_Lab4" >
+        <activity
+            android:name=".PatientEditActivity"
+            android:exported="true"
+            android:parentActivityName=".PatientActivity"/>
+        <activity
+            android:name=".PatientListActivity"
+            android:exported="true"
+            android:parentActivityName=".PatientActivity"/>
         <activity
             android:name=".PatientActivity"
             android:exported="true"

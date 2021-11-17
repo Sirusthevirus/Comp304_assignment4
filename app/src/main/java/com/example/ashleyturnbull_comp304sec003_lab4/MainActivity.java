@@ -79,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void editPatients(View view){
-        Intent intent = new Intent(this, PatientActivity.class);
+        Intent intent = new Intent(this, PatientListActivity.class);
         startActivity(intent);
     }
 }
