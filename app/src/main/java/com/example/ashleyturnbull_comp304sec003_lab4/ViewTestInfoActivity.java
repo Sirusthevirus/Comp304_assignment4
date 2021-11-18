@@ -39,7 +39,18 @@ public class ViewTestInfoActivity extends AppCompatActivity implements AdapterVi
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener(this);
-
+        editTextPatientName = (EditText)findViewById(R.id.editText_Name);
+        editTextPatientID = (EditText)findViewById(R.id.editText_PatientID);
+        editTextNurseID = (EditText)findViewById(R.id.editText_NurseID);
+        editTextBPL = (EditText)findViewById(R.id.editText_BPL);
+        editTextBPH = (EditText)findViewById(R.id.editText_BPH);
+        editTextTemp = (EditText)findViewById(R.id.editText_Temperature);
+        editTextDate = (EditText)findViewById(R.id.editTextDateOfTest);
+        try {
+            populateData();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
 
 //        patientViewModel.getAllPatients().observe(this, new Observer<List<Patient>>() {
@@ -55,7 +66,7 @@ public class ViewTestInfoActivity extends AppCompatActivity implements AdapterVi
         testViewModel.getAllTests().observe(this, new Observer<List<Test>>() {
             @Override
             public void onChanged(@Nullable List<Test> result) {
-                Toast.makeText(ViewTestInfoActivity.this, "Size:  \n" + result.size(), Toast.LENGTH_LONG).show();
+                //Toast.makeText(ViewTestInfoActivity.this, "Size:  \n" + result.size(), Toast.LENGTH_LONG).show();
                 for(Test test : result) {
                     testIDs.add(test.getTestID());
                 }
@@ -77,6 +88,17 @@ public class ViewTestInfoActivity extends AppCompatActivity implements AdapterVi
         editTextBPH.setText(tempTest.getBPH());
         editTextTemp.setText(""+tempTest.getTemperature());
         editTextDate.setText(tempTest.getTestDate());
+    }
+
+    public void populateData() throws InterruptedException {
+        Thread.sleep(1000);
+        editTextPatientName.setText("Test1");
+        editTextPatientID.setText("1");
+        editTextNurseID.setText("1");
+        editTextBPL.setText("1");
+        editTextBPH.setText("1");
+        editTextTemp.setText("1");
+        editTextDate.setText("2021/11/18");
     }
 
     @Override

@@ -22,6 +22,7 @@ public class PatientListActivity extends AppCompatActivity implements AdapterVie
         private ListView patientListView;
         private PatientViewModel patientViewModel;
         private EditText firstName, lastName, department, nurseID, room;
+        String Value1, Value2, Value3, Value4, Value5;
 
         @Override
         protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +33,7 @@ public class PatientListActivity extends AppCompatActivity implements AdapterVie
                 department = (EditText)findViewById(R.id.editText_Department);
                 nurseID = (EditText)findViewById(R.id.editText_NurseID);
                 room = (EditText)findViewById(R.id.editText_Room);
+                Value1 = "test1";
 
                 patientViewModel = new ViewModelProvider(this).get(PatientViewModel.class);
                 //Spinner
@@ -47,26 +49,38 @@ public class PatientListActivity extends AppCompatActivity implements AdapterVie
                                 }
                         }
                 });
-
                 Spinner spinner = findViewById(R.id.spn_Patients);
                 ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, patientsIDs);
+                adapter.notifyDataSetChanged();
                 adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 spinner.setAdapter(adapter);
                 spinner.setOnItemSelectedListener(this);
+                spinner.setSelection(1);
+                populateData();
         }
+
 
         @Override
         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String string = parent.getItemAtPosition(position).toString();
                 int patientID = Integer.parseInt((string));
                 Patient patient = patientViewModel.findByPatientID(patientID).getValue();
-
                 firstName.setText(patient.getFirstName());
                 lastName.setText(patient.getLastName());
                 department.setText(patient.getDepartment());
                 nurseID.setText(patient.getNurseID());
                 room.setText(patient.getRoom());
+        }
 
+        public void populateData() {
+                firstName.setText("Test1");
+                lastName.setText("Test1");
+                department.setText("Test1");
+                nurseID.setText("1");
+                room.setText("Test1");
+        }
+
+        public void savePatient() {
 
         }
 
